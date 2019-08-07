@@ -1,0 +1,27 @@
+version: "3"
+services:
+  app:
+    image: devmx/app:latest
+    build: .
+    restart: always
+    port:
+      - "80:8085"
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+  database:
+    image: postgres:9.6
+    restart: always
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+    ports:
+      - "5433:5432"
+    environment:
+      - POSTGRES_PASSWORD=postgres
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - /etc/timezone:/etc/timezone:ro
+      - /var/local/vols/volsmx:/var/lib/postgresql/data
+
