@@ -1,5 +1,5 @@
 FROM maven:3.5.4-jdk-8-alpine AS builder
-WORKIR /app
+WORKDIR /app
 ADD pom.xml .
 RUN mvn verify clean --fail-never
 COPY . .

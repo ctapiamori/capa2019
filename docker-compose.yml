@@ -4,7 +4,7 @@ services:
     image: devmx/app:latest
     build: .
     restart: always
-    port:
+    ports:
       - "80:8085"
     volumes:
       - /etc/timezone:/etc/timezone:ro
